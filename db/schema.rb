@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215171533) do
+ActiveRecord::Schema.define(version: 20161215180610) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.binary   "profile_photo_data"
+    t.string   "profile_photo_type"
+    t.string   "profile_photo_name"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "profile_photo_local"
   end
 
 end
