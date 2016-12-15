@@ -11,12 +11,22 @@
 </p>
 
 <p>
-  Local:
-  <%= image_tag @user.profile_photo_local %>
-</p>
-<p>
   Database:
   <%= image_tag user_serve_path(@user) %>
+</p>
+<hr>
+
+<p>
+  Local:
+  <%= image_tag user_local_path(@user) %>
+</p>
+<hr>
+
+<p>
+  Paperclip:
+  <%= image_tag @user.avatar.url(:original) %>
+  <%= image_tag @user.avatar.url(:medium) %>
+  <%= image_tag @user.avatar.url(:thumb) %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

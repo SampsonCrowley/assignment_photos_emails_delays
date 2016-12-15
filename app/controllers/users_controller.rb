@@ -61,11 +61,17 @@ class UsersController < ApplicationController
     end
   end
 
+
   def serve
     @user = User.find(params[:user_id])
     send_data(@user.profile_photo[0],  :type => @user.profile_photo[1],
     :filename => "#{@user.profile_photo[3]}",
     :disposition => "inline")
+  end
+
+  def local
+    @user = User.find(params[:user_id])
+    send_file(@user.profile_photo_local)
   end
 
   private
@@ -77,6 +83,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :photo_data, :photo_data_local)
+      params.require(:user).permit(:username, :email, :photo_data, :photo_data_local, :avatar)
     end
 end

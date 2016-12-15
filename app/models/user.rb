@@ -1,17 +1,19 @@
 
 class User < ApplicationRecord
-  attr_reader :photo_data, :profile_photo_local
+  attr_reader :photo_data
 
+  has_attached_file :avatar, styles: {medium: '300x300>', thumb: "100x100>"}, default_url: "https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/*\Z/
 
   def photo_data_local=(data)
     self.profile_photo_local_type = data.content_type
 
 
-    filename = "#{SecureRandom.urlsafe_base64}-#{data.original_filename}".downcase!
-    filepath = Rails.root.join('public', 'uploads', filename)
+    filename = "public/uploads/#{SecureRandom.urlsafe_base64}-#{data.original_filename}".downcase!
+    filepath = Rails.root.join(filename)
 
-    binding.pry
-    self.profile_photo_local = filepath
+    self.profile_photo_local = filename
 
     File.open(filepath, 'wb') do |file|
        file.write(data.read)
