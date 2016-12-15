@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20161215180610) do
     t.binary   "profile_photo_data"
     t.string   "profile_photo_type"
     t.string   "profile_photo_name"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "profile_photo_local"
+    t.string   "profile_photo_local_type"
   end
 
 end

@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     :filename => "#{@user.profile_photo[3]}",
     :disposition => "inline")
   end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -76,6 +77,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :photo_data)
+      params.require(:user).permit(:username, :email, :photo_data, :photo_data_local)
     end
 end
