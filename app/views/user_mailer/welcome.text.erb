@@ -1,0 +1,11 @@
+Welcome to the Photo Emails App
+
+Howdy <%=  @user.username %>!
+
+You made the mistake of signing up for something completely useless. I hope you're happy.
+Prepare for tons of spam, as you've officially granted us access to fill your inbox.
+If you feel like changing your mind, go ahead and visit <%= user_url(@user.id) %>.
+
+
+Because we know you're stupid, we'll rephrase that to make it much more clearer:
+GO TO <%= user_url(@user.id) %> TO UNSUBSCRIBE
