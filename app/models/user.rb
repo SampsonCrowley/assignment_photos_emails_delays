@@ -27,6 +27,10 @@ class User < ApplicationRecord
   end
 
   def photo_data=(data)
+    ProcessImageJob.perform_later(data)
+  end
+  
+  def process_photo
     self.profile_photo_data = data.read
     self.profile_photo_name = data.original_filename
     self.profile_photo_type = data.content_type
