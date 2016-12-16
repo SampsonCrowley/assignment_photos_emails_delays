@@ -1,10 +1,12 @@
 
 class User < ApplicationRecord
+  after_create :send_welcome
+
   attr_reader :photo_data
 
   has_attached_file :avatar, styles: {medium: '300x300>', thumb: "100x100>"}, default_url: "https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
 
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/*\Z/
+  validates_attachment_content_type :avatar, content_type: /\Aimage.*\Z/
 
   def photo_data_local=(data)
     self.profile_photo_local_type = data.content_type
@@ -30,4 +32,9 @@ class User < ApplicationRecord
     self.profile_photo_type = data.content_type
   end
 
+  private
+    def send_welcome
+      UserMailer.welcome(self).deliver
+    end
+    handle_asynchronously :send_welcome
 end

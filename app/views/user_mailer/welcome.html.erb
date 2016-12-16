@@ -1,0 +1,8 @@
+<h1>Welcome to the Photo Emails App</h1>
+<p>Howdy <%=  @user.username %>!</p>
+<p>You made the mistake of signing up for something completely useless. I hope you're happy.</p>
+<p>Prepare for tons of spam, as you've officially granted us access to fill your inbox.</p>
+<p>If you feel like changing your mind, go ahead and <%= link_to "click here", user_url(@user.id) %>.</p>
+<br><br><hr><br><br>
+<p>Because we know you're stupid, we'll rephrase that to make it much more clearer:</p>
+<h2><%= link_to "CLICK HERE TO UNSUBSCRIBE, IDIOT", user_url(@user.id) %></h2>

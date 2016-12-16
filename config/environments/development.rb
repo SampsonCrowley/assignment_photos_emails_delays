@@ -51,6 +51,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener
 
   config.paperclip_defaults = {
 
@@ -63,7 +65,7 @@ Rails.application.configure do
       # #   see the reading below for more details
       # # NOTE: This must be the correct region for YOU
       :s3_host_name => "s3-#{Rails.application.secrets.aws_region}.amazonaws.com",
-      
+
       # NOTE: these lines are changed to use secrets.yml
       # from the examples (which use ENV vars instead)
       s3_region: Rails.application.secrets.aws_region,
