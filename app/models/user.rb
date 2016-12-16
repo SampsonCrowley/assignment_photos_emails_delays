@@ -36,7 +36,6 @@ class User < ApplicationRecord
 
   private
     def send_welcome
-      UserMailer.welcome(self).deliver
+      UserMailer.welcome(self.id).deliver_later
     end
-    handle_asynchronously :send_welcome
 end
