@@ -20,6 +20,7 @@ gem 'aws-sdk'
 gem 'figaro'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem "delayed_paperclip"
 gem 'daemons'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
